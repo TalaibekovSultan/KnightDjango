@@ -1,0 +1,19 @@
+{% extends 'web/home.html' %}
+
+{% block title %}Добавление{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <div class="formak">
+            <form class="forma " method="post">
+                {% csrf_token %}
+                {{ form.name }}<br>
+                {{ form.about }}<br>
+                {{ form.images }} <br>
+                <span>{{ error }}</span>
+                <button class="btn btn-success" type="submit">Добавить блюдо</button>
+                <a class="btn btn-success" href="/menu">Отмена</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

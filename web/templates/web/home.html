@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/web/css/web.css">
+    <script src="https://kit.fontawesome.com/fa83bf9143.js" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<ul class="header">
+    <div class="hrs">
+        <div class="fhed">
+            <a href="/"><img class="logo" src="../../static/web/img/logo.png" alt=""></a>
+            <a class="shadow" href="/"><div class="sh"><li class="homik"><i class="fas fa-home"></i></li></div></a>
+            <a class="shadow" href="/menu"><div class="sh"><li><i class="fab fa-elementor"></i></li></div></a>
+            <a class="shadow" href="/about"><div class="sh"><li><i class="fas fa-comment"></i></li></div></a>
+            <a class="shadow" href="/menu/aboutuser"><div class="sh"><li class="acc"><i class="fas fa-user"></i></li></div></a>
+            <li class="vhod">
+                {% if user.is_authenticated %}
+                <span class="text">
+                {{ user.get_username }} <br> <a class="vih" href="/menu/log_out">Выйти</a>
+            </span>
+                {% else %}
+                <span class="texts">
+                <a class="regi" href="/menu/register">Регистрация</a> <br> <a href="/menu/user">Войти</a>
+            </span>
+                {% endif %}
+            </li>
+        </div>
+    </div>
+
+</ul>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

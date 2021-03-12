@@ -1,0 +1,58 @@
+{% extends 'web/home.html' %}
+
+{% block title %}Меню{% endblock %}
+
+{% block content %}
+<div class="heder_menu">
+    <div class="mn">
+        <div class="menus">
+            <h1 class="men">Меню</h1>
+            {% if user.is_superuser %}
+                <a href="adda" class="add">Добавить</a>
+            {% endif %}
+            <div class="poisk">
+                <div class="nav-item active col-4">
+                    <form class="form-inline my-2 my-lg-0" method="post">
+                        {% csrf_token %}
+                        <div class="searchik form-group">
+                            <input type="text" class="form-control" name="search" id="id_search">
+                            <!--                    <label for="submit_search" class="button">Поиск</label>-->
+                            <input id="submit_search" class="form-control" type="submit" hidden>
+                            <label for="submit_search" class="button poiskat">Поиск</label>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="sf row">
+            {% if menu %}
+            {% for el in menu %}
+            <div class="tovar col-3">
+                <div class="">
+
+                <div class="cart">
+                    <a href="{{ el.id }}">
+                            <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ el.images }}" alt=""></div>
+                            <a href="{{ el.id }}" class="elname" >{{ el.name }}</a>
+                    </a>
+                    <form action="cart/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="dish_id" value="{{ el.id }}">
+                        <label>
+                            <input type="number" name="qty" value="{{ el.id }}">
+                        </label>
+                        <button type="submit">Добавить в корзину</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="pusto"> В меню пусто </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

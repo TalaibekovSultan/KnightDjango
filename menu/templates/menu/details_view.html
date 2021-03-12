@@ -1,0 +1,25 @@
+{% extends 'web/home.html' %}
+
+{% block title %}{{ article.name }}{% endblock %}
+
+{% block content %}
+<div>
+    <div class="dishesmen">
+        <h1>{{ article.name }}</h1>
+        <div>Изготовитель: {{ article.get_companys }}</div>
+        <div class="dffc">
+            <div class="dibb">
+                <div class="aboutinfo">{{article.about}}</div>
+                {% if user.is_superuser %}
+                    <div><a class="btn btn-primary duus" href="{{ article.id }}/update" >Изменить</a></div>
+                {% endif %}
+            </div>
+            <div class="imgshka"><img class="dishicc" src="{{ MEDIA_URL }}{{ article.images }}" alt="">
+                <div class="aboutdish"><a href="/menu" class="price">Цена: {{ article.price }}</a></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
