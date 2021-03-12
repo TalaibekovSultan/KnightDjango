@@ -1,0 +1,8 @@
+.idea
+ /myvenv/
+/media/
+/web/migrations/
+/menu/migrations/
+/staticfiles/
+/db.json
+/db.sqlite3
