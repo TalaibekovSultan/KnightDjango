@@ -1,8 +1,8 @@
 .idea
  /myvenv/
-/media/
 /web/migrations/
 /menu/migrations/
 /staticfiles/
-/db.json
-/db.sqlite3
+db.json
+db.sqlite3
+/media/
