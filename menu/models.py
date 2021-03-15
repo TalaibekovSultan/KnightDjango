@@ -27,15 +27,15 @@ class Menu(models.Model):
     def get_absolute_url(self):
         return f'/menu/{self.id}'
 
-    def __str__(self):
-        return str(self.name)
-
     def get_companys(self):
         return ', ' .join([cat.name for cat in self.companys.all()])
 
     class Meta:
         verbose_name = 'Еду'
         verbose_name_plural = 'Еда'
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Cart(models.Model):
