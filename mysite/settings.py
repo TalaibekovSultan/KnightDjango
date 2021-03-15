@@ -136,12 +136,13 @@ STATIC_URL = 'static/'
 STATICFILES_DIR = [
     BASE_DIR / "menu/static",
     BASE_DIR / "web/static",
-    BASE_DIR / "menu, web/media",
+    BASE_DIR / "menu/media",
+    BASE_DIR / "web/media",
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_ROOT = BASE_DIR / 'menu, web/static/'
+STATIC_ROOT = BASE_DIR / 'static/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
