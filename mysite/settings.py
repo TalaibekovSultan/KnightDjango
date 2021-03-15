@@ -131,10 +131,11 @@ LOGOUT_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIR = [
-    BASE_DIR / "menu, web/static",
+    BASE_DIR / "menu/static",
+    BASE_DIR / "web/static",
     BASE_DIR / "menu, web/media",
 ]
 
@@ -148,7 +149,10 @@ STATICFILES_FINDERS = (
 )
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'menu, web/media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 ADMIN_MEDIA_PREFIX = 'static/admin/'
+
+INTERNAL_IPS = ('127.0.0.1', 'localhost')
+
 django_heroku.settings(locals())

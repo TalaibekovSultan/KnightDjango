@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-сумма:{{ cart_total }}<br>
-количсетво:{{ cart_records.count }}<br>
-товары:<br>
-{% for item in cart_records %}
-    название:{{ item.product.name }}<br>
-    кол:{{ item.qty }}<br>
-{% endfor %}
-</body>
-</html>
+{% extends 'web/home.html' %}
+
+{% block title %}Карзина{% endblock %}
+
+{% block content %}
+<div class="bolmen">
+    <div class="dcd">
+        <h1 class="glavss">Корзина</h1>
+        <a href="/menu" class="addss">Назад</a>
+    </div>
+
+    <div class="lines"></div>
+    <div class="colvotov">
+        В вашей корзине {{ cart_records.count }} товара
+    </div>
+    <div class="cartcor">
+        <br>
+        Товары:<br>
+        {% for item in cart_records %}
+            {{ item.product.name }} х {{ item.qty }}<br>
+        {% endfor %}
+        Сумма всех товаров:{{ cart_total }}<br>
+    </div>
+</div>
+
+{% endblock %}

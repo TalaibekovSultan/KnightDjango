@@ -64,7 +64,8 @@ li{
 }
 .cart{
     width: 170px;
-    height: 200px;
+    height: 220px;
+    margin-top: 28px;
     border-radius: 22px;
     background: white;
     font-family: "Yanone Kaffeesatz", sans-serif;
@@ -92,7 +93,7 @@ li{
 
 }
 .sf{
-    margin-top: 90px;
+    margin-top: 70px;
     display: flex;
 }
 .cart:hover{
@@ -130,11 +131,29 @@ li{
     box-shadow: 6px 4px 9px rgba(0, 0, 0, 0.32), -4px -4px 14px white, inset -12px -12px 23px rgba(0, 0, 0, 0.07), inset 9px 9px 23px white;rgba(255, 255, 255, 0.86); /* Параметры тени */
     font-family: "Yanone Kaffeesatz", sans-serif;
     padding: 4px 25px;
-    margin: 55px 0 0 550px;
+    margin: 55px 0 0 10px;
     transition: transform 0.1s ease;
-
+    text-align: center;
 }
 .add:hover{
+    text-decoration: none;
+    color: black;
+    transform: scale(1.1);
+}
+.adds{
+    color: grey;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: 6px 4px 9px rgba(0, 0, 0, 0.32), -4px -4px 14px white, inset -12px -12px 23px rgba(0, 0, 0, 0.07), inset 9px 9px 23px white;rgba(255, 255, 255, 0.86); /* Параметры тени */
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    padding: 4px 25px;
+    margin: 55px 0 0 490px;
+    transition: transform 0.1s ease;
+    text-align: center;
+}
+.adds:hover{
     text-decoration: none;
     color: black;
     transform: scale(1.1);
@@ -325,7 +344,86 @@ li{
 .duus:hover{
     text-decoration: none;
     color: black;
-
+}
+.corz{
+    background-color: #F1F1F1;
+    border-radius: 22px;
+    height: 40px;
 
 }
+.cras{
+    display: flex;
+    padding: 5px 7px;
+    justify-content: space-between;
+}
+.cnopochka{
+    width: 30px;
+    height: 30px;
+    border-radius: 22px;
 
+}
+.imgcnop{
+    width: 15px;
+    height: 15px;
+    margin-left: -1px;
+}
+.inpsd{
+    width: 40px;
+    height: 30px;
+    border-radius: 22px;
+    outline: none;
+    cursor: pointer;
+}
+.domss{
+    margin-left: -7px;
+    margin-top: 3px;
+}
+.bordertp{
+    outline: none;
+}
+.glavss{
+    padding: 40px 0 0 95px;
+
+}
+.bolmen{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+}
+.men{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+}
+.lines{
+    width: 775px;
+    height: 8px;
+    margin-left: 235px;
+    background-color: #2B3036;
+}
+.cartcor{
+    margin-left: 235px;
+    margin-top: 25px
+}
+.colvotov{
+    font-size: 30px;
+    margin-left: 235px;
+    color: grey;
+}
+.dcd{
+    display: flex;
+}
+.addss{
+    color: grey;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: 6px 4px 9px rgba(0, 0, 0, 0.32), -4px -4px 14px white, inset -12px -12px 23px rgba(0, 0, 0, 0.07), inset 9px 9px 23px white;rgba(255, 255, 255, 0.86); /* Параметры тени */
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    padding: 4px 25px;
+    margin: 55px 0 0 570px;
+    transition: transform 0.1s ease;
+    text-align: center;
+}
+.addss:hover{
+    text-decoration: none;
+    color: black;
+    transform: scale(1.1);
+}

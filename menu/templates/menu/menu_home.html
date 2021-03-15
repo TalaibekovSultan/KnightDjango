@@ -7,6 +7,7 @@
     <div class="mn">
         <div class="menus">
             <h1 class="men">Меню</h1>
+            <a href="cart/" class="adds">Корзина</a>
             {% if user.is_superuser %}
                 <a href="adda" class="add">Добавить</a>
             {% endif %}
@@ -30,22 +31,22 @@
             {% if menu %}
             {% for el in menu %}
             <div class="tovar col-3">
-                <div class="">
-
                 <div class="cart">
                     <a href="{{ el.id }}">
                             <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ el.images }}" alt=""></div>
                             <a href="{{ el.id }}" class="elname" >{{ el.name }}</a>
                     </a>
-                    <form action="cart/" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="dish_id" value="{{ el.id }}">
-                        <label>
-                            <input type="number" name="qty" value="{{ el.id }}">
-                        </label>
-                        <button type="submit">Добавить в корзину</button>
+                    <form class="corz" action="cart/" method="post">
+                        <div class="cras">
+                             {% csrf_token %}
+                            <input class="" type="hidden" name="dish_id" value="{{ el.id }}">
+                            <label class="bordertp">
+                                <input class="inpsd" type="number" name="qty" value="{{ menu.id }}">
+                            </label>
+                            <div class="domss"> {{ el.price }} </div>
+                            <button class="cnopochka domms" type="submit"><img class="imgcnop" src="../static/web/img/w128h1281390856920buy128.png" alt=""></button>
+                        </div>
                     </form>
-                </div>
                 </div>
             </div>
             {% endfor %}

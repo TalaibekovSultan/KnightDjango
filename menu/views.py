@@ -48,6 +48,7 @@ class MasterView(View):
         return cart
 
 
+
 class NewDeteilView(DetailView):
     model = Menu
     template_name = 'menu/details_view.html'
@@ -173,7 +174,7 @@ class CartView(MasterView):
         cart_content.qty = quantity
         if cart != 0:
             cart_content.save()
-        response = self.get_cart_records(cart, redirect('/#dish-{}'.format(dish.id)))
+        response = self.get_cart_records(cart, redirect('/menu/#dish-{}'.format(dish.id)))
         return response
         # перенаправляем на главную страницу, с учетом якоря
 
