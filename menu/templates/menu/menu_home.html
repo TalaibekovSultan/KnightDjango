@@ -9,7 +9,7 @@
             <h1 class="men">Меню</h1>
             <a href="cart/" class="adds">Корзина</a>
             {% if user.is_superuser %}
-                <a href="adda" class="add">Добавить</a>
+            <a href="adda" class="add">Добавить</a>
             {% endif %}
             <div class="poisk">
                 <div class="nav-item active col-4">
@@ -27,24 +27,31 @@
             </div>
         </div>
         <div class="line"></div>
+
+        <div class="razburg">
+            По акции
+        </div>
         <div class="sf row">
             {% if menu %}
             {% for el in menu %}
             <div class="tovar col-3">
                 <div class="cart">
                     <a href="{{ el.id }}">
-                            <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ el.images }}" alt=""></div>
-                            <a href="{{ el.id }}" class="elname" >{{ el.name }}</a>
+                        <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ el.images }}"
+                                                  alt=""></div>
+                        <a href="{{ el.id }}" class="elname">{{ el.name }}</a>
                     </a>
                     <form class="corz" action="cart/" method="post">
                         <div class="cras">
-                             {% csrf_token %}
+                            {% csrf_token %}
                             <input class="" type="hidden" name="dish_id" value="{{ el.id }}">
                             <label class="bordertp">
                                 <input class="inpsd" type="number" name="qty" value="{{ menu.id }}">
                             </label>
-                            <div class="domss"> {{ el.price }} </div>
-                            <button class="cnopochka domms" type="submit"><img class="imgcnop" src="../static/web/img/w128h1281390856920buy128.png" alt=""></button>
+                            <div class="domss"> {{ el.price }}</div>
+                            <button class="cnopochka domms" type="submit"><img class="imgcnop"
+                                                                               src="../static/web/img/w128h1281390856920buy128.png"
+                                                                               alt=""></button>
                         </div>
                     </form>
                 </div>
@@ -53,6 +60,42 @@
             {% else %}
             <p class="pusto"> В меню пусто </p>
             {% endif %}
+        </div>
+        <div class="razburg">
+            Бургеры
+        </div>
+        <div class="sf row">
+            {% if burg %}
+            {% for le in burg %}
+            <div class="tovar col-3">
+                <div class="cart">
+                    <a href="{{ le.id }}">
+                        <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ le.images }}"
+                                                  alt=""></div>
+                        <a href="{{ le.id }}" class="elname">{{ le.name }}</a>
+                    </a>
+                    <form class="corz" action="cart/" method="post">
+                        <div class="cras">
+                            {% csrf_token %}
+                            <input class="" type="hidden" name="dish_id" value="{{ le.id }}">
+                            <label class="bordertp">
+                                <input class="inpsd" type="number" name="qty" value="{{ burg.id }}">
+                            </label>
+                            <div class="domss"> {{ le.price }}</div>
+                            <button class="cnopochka domms" type="submit"><img class="imgcnop"
+                                                                               src="../static/web/img/w128h1281390856920buy128.png"
+                                                                               alt=""></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="pusto"> В меню пусто </p>
+            {% endif %}
+        </div>
+        <div>
+
         </div>
     </div>
 </div>

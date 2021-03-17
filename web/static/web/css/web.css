@@ -65,13 +65,13 @@ li{
 .cart{
     width: 170px;
     height: 220px;
-    margin-top: 28px;
     border-radius: 22px;
     background: white;
     font-family: "Yanone Kaffeesatz", sans-serif;
     transition: transform 0.1s ease;
     color: grey;
     text-decoration: none;
+    margin-top: 20px
 }
 .blockdl{
     width: 170px;
@@ -93,7 +93,6 @@ li{
 
 }
 .sf{
-    margin-top: 70px;
     display: flex;
 }
 .cart:hover{
@@ -426,4 +425,8 @@ li{
     text-decoration: none;
     color: black;
     transform: scale(1.1);
+}
+.razburg{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    margin-top: 50px;
 }

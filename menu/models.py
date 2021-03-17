@@ -20,6 +20,7 @@ class Company(models.Model):
 class Menu(models.Model):
     images = models.ImageField(upload_to='media/', verbose_name='Вид', blank=True, null=True)
     name = models.CharField('Название', max_length=30)
+    cotegory = models.CharField('Тип', max_length=30, default='Dish')
     companys = models.ManyToManyField(Company, verbose_name='Изготовитель')
     about = models.TextField('О блюде')
     price = models.PositiveIntegerField(null=True, verbose_name="Цена")
@@ -58,3 +59,7 @@ class CartContent(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Menu, on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(null=True)
+
+
+
+

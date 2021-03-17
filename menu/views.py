@@ -48,7 +48,6 @@ class MasterView(View):
         return cart
 
 
-
 class NewDeteilView(DetailView):
     model = Menu
     template_name = 'menu/details_view.html'
@@ -67,7 +66,6 @@ def menu(request):
 
     # all_dishes = ''
 
-
     if request.method == 'POST':
         form = SearchForm(request.POST)
         search = request.POST.get('search')
@@ -76,15 +74,12 @@ def menu(request):
             search_vector = SearchVector('name',
                                          'about',
                                          'price',
-                                         'companys__name',)
+                                         'companys__name', )
             menu = Menu.objects.annotate(search=search_vector).filter(search=search)
     else:
         form = SearchForm
 
     return render(request, 'menu/menu_home.html', {'menu': menu, 'name': menu, 'form': form, 'user': request.user})
-
-
-
 
 
 def adda(request):
@@ -177,4 +172,3 @@ class CartView(MasterView):
         response = self.get_cart_records(cart, redirect('/menu/#dish-{}'.format(dish.id)))
         return response
         # перенаправляем на главную страницу, с учетом якоря
-

@@ -7,6 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.restshop.urls')),
     path('menu/', include('menu.urls')),
     path('', include('web.urls')),
     path('', include('social_django.urls', namespace='social'))
