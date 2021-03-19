@@ -62,8 +62,8 @@ class NewUpdateView(UpdateView):
 
 
 def menu(request):
-    menu = Menu.objects.all()
-
+    menu = Menu.objects.filter(cotegory= 'Dish')
+    burg = Menu.objects.filter(cotegory= 'Burger')
     # all_dishes = ''
 
     if request.method == 'POST':
@@ -79,7 +79,10 @@ def menu(request):
     else:
         form = SearchForm
 
-    return render(request, 'menu/menu_home.html', {'menu': menu, 'name': menu, 'form': form, 'user': request.user})
+    return render(request, 'menu/menu_home.html', {'menu': menu, 'burg': burg, 'name': menu, 'form': form, 'user': request.user})
+
+
+
 
 
 def adda(request):
@@ -150,7 +153,7 @@ class CartView(MasterView):
     def get(self, request):
         cart = self.get_cart()
         cart_records = self.get_cart_records(cart)
-        cart_total = cart.get_total() if cart else 0
+        cart_total = cart.get_total if cart else 0
 
         context = {
             'cart_records': cart_records,
@@ -172,3 +175,4 @@ class CartView(MasterView):
         response = self.get_cart_records(cart, redirect('/menu/#dish-{}'.format(dish.id)))
         return response
         # перенаправляем на главную страницу, с учетом якоря
+

@@ -47,6 +47,7 @@ class Cart(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
     def get_total(self):
         items = CartContent.objects.filter(cart=self.id)
         total = 0

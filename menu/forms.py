@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class MenuForm(ModelForm):
     class Meta:
         model = Menu
-        fields = ['images', 'name', 'about']
+        fields = ['images', 'name', 'about', 'cotegory']
 
         widgets = {
             "name": TextInput(attrs={
@@ -18,6 +18,10 @@ class MenuForm(ModelForm):
             "about": Textarea(attrs={
                 'class': 'form-group',
                 'placeholder': 'О блюде'
+            }),
+            "cotegory": TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'Тип блюда'
             })
         }
 

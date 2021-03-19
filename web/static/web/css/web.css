@@ -430,3 +430,11 @@ li{
     font-family: "Yanone Kaffeesatz", sans-serif;
     margin-top: 50px;
 }
+.nonedec{
+    text-decoration: none;
+    color: black;
+}
+.nonedec:hover{
+    text-decoration: none;
+    color: black;
+}
