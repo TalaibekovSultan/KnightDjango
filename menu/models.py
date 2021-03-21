@@ -44,6 +44,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     total_cost = models.PositiveIntegerField()
 
+
     def __str__(self):
         return str(self.id)
 
@@ -54,6 +55,10 @@ class Cart(models.Model):
         for item in items:
             total += item.product.price * item.qty
         return total
+
+    @property
+    def get_cart_content(self):
+        return CartContent.objects.filter(cart=self.id)
 
 
 class CartContent(models.Model):

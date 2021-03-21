@@ -94,6 +94,7 @@ li{
 }
 .sf{
     display: flex;
+    width: 1400px;
 }
 .cart:hover{
     color: black;
@@ -437,4 +438,17 @@ li{
 .nonedec:hover{
     text-decoration: none;
     color: black;
+}
+.ssssd{
+    margin-left: 200px;
+}
+.poisktov{
+    display: flex;
+}
+
+.nosearsh{
+    margin-left: 25px;
+}
+.poiscovv{
+    margin-left: 90px;
 }

@@ -27,75 +27,119 @@
             </div>
         </div>
         <div class="line"></div>
+        <div class="poisktov">
+            <div class="tovarchk">
+                <div class="razburg">
+                    Супы
+                </div>
+                <div class="sf row">
+                    {% if menu %}
+                    {% for el in menu %}
+                    <div class="tovar col-3">
+                        <div class="cart">
+                            <a href="{{ el.id }}">
+                                <div class="blockdl"><img class="card-img w-119 h-118"
+                                                          src="{{ MEDIA_URL }}{{ el.images }}"
+                                                          alt=""></div>
+                                <a href="{{ el.id }}" class="elname">{{ el.name }}</a>
+                            </a>
+                            <form class="corz" action="cart/" method="post">
+                                <div class="cras">
+                                    {% csrf_token %}
+                                    <input class="" type="hidden" name="dish_id" value="{{ el.id }}">
+                                    <label class="bordertp">
+                                        <input class="inpsd" type="number" name="qty" value="{{ menu.id }}">
+                                    </label>
+                                    <div class="domss"> {{ el.price }}</div>
+                                    <button class="cnopochka domms" type="submit"><img class="imgcnop"
+                                                                                       src="../static/web/img/w128h1281390856920buy128.png"
+                                                                                       alt=""></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="pusto"> В меню пусто </p>
+                    {% endif %}
+                </div>
+                <div class="razburg nonedec">
+                    <a name="Burgza" class="razburg nonedec">
+                        Бургеры
+                    </a>
+                </div>
+                <div class="sf row">
+                    {% if burg %}
+                    {% for le in burg %}
+                    <div class="tovar col-3">
+                        <div class="cart">
+                            <a href="{{ le.id }}">
+                                <div class="blockdl"><img class="card-img w-119 h-118"
+                                                          src="{{ MEDIA_URL }}{{ le.images }}"
+                                                          alt=""></div>
+                                <a href="{{ le.id }}" class="elname">{{ le.name }}</a>
+                            </a>
+                            <form class="corz" action="cart/" method="post">
+                                <div class="cras">
+                                    {% csrf_token %}
+                                    <input class="" type="hidden" name="dish_id" value="{{ le.id }}">
+                                    <label class="bordertp">
+                                        <input class="inpsd" type="number" name="qty" value="{{ burg.id }}">
+                                    </label>
+                                    <div class="domss"> {{ le.price }}</div>
+                                    <button class="cnopochka domms" type="submit"><img class="imgcnop"
+                                                                                       src="../static/web/img/w128h1281390856920buy128.png"
+                                                                                       alt=""></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="pusto"> В меню пусто </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="poiscovv">
 
-        <div class="razburg">
-            По акции
-        </div>
-        <div class="sf row">
-            {% if menu %}
-            {% for el in menu %}
-            <div class="tovar col-3">
-                <div class="cart">
-                    <a href="{{ el.id }}">
-                        <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ el.images }}"
-                                                  alt=""></div>
-                        <a href="{{ el.id }}" class="elname">{{ el.name }}</a>
-                    </a>
-                    <form class="corz" action="cart/" method="post">
-                        <div class="cras">
-                            {% csrf_token %}
-                            <input class="" type="hidden" name="dish_id" value="{{ el.id }}">
-                            <label class="bordertp">
-                                <input class="inpsd" type="number" name="qty" value="{{ menu.id }}">
-                            </label>
-                            <div class="domss"> {{ el.price }}</div>
-                            <button class="cnopochka domms" type="submit"><img class="imgcnop"
-                                                                               src="../static/web/img/w128h1281390856920buy128.png"
-                                                                               alt=""></button>
+                <div class="">
+                    {% if menus %}
+                    <div class="razburg">
+                    Найдено
+                    </div>
+                    {% for ela in menus %}
+                    <div class="tovar">
+                        <div class="cart">
+                            <a href="{{ ela.id }}">
+                                <div class="blockdl"><img class="card-img w-119 h-118"
+                                                          src="{{ MEDIA_URL }}{{ ela.images }}"
+                                                          alt=""></div>
+                                <a href="{{ ela.id }}" class="elname">{{ ela.name }}</a>
+                            </a>
+                            <form class="corz" action="cart/" method="post">
+                                <div class="cras">
+                                    {% csrf_token %}
+                                    <input class="" type="hidden" name="dish_id" value="{{ ela.id }}">
+                                    <label class="bordertp">
+                                        <input class="inpsd" type="number" name="qty" value="{{ menus.id }}">
+                                    </label>
+                                    <div class="domss"> {{ ela.price }}</div>
+                                    <button class="cnopochka domms" type="submit"><img class="imgcnop"
+                                                                                       src="../static/web/img/w128h1281390856920buy128.png"
+                                                                                       alt=""></button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="pusto nosearsh"></p>
+                    {% endif %}
                 </div>
             </div>
-            {% endfor %}
-            {% else %}
-            <p class="pusto"> В меню пусто </p>
-            {% endif %}
         </div>
-        <div class="razburg nonedec">
-            <a name="Burgza" class="razburg nonedec">
-                Бургеры
-            </a>
-        </div>
-        <div class="sf row">
-            {% if burg %}
-            {% for le in burg %}
-            <div class="tovar col-3">
-                <div class="cart">
-                    <a href="{{ le.id }}">
-                        <div class="blockdl"><img class="card-img w-119 h-118" src="{{ MEDIA_URL }}{{ le.images }}"
-                                                  alt=""></div>
-                        <a href="{{ le.id }}" class="elname">{{ le.name }}</a>
-                    </a>
-                    <form class="corz" action="cart/" method="post">
-                        <div class="cras">
-                            {% csrf_token %}
-                            <input class="" type="hidden" name="dish_id" value="{{ le.id }}">
-                            <label class="bordertp">
-                                <input class="inpsd" type="number" name="qty" value="{{ burg.id }}">
-                            </label>
-                            <div class="domss"> {{ le.price }}</div>
-                            <button class="cnopochka domms" type="submit"><img class="imgcnop"
-                                                                               src="../static/web/img/w128h1281390856920buy128.png"
-                                                                               alt=""></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            {% endfor %}
-            {% else %}
-            <p class="pusto"> В меню пусто </p>
-            {% endif %}
-        </div>
+
+
         <div>
 
         </div>

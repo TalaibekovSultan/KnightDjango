@@ -62,8 +62,9 @@ class NewUpdateView(UpdateView):
 
 
 def menu(request):
-    menu = Menu.objects.filter(cotegory= 'Dish')
-    burg = Menu.objects.filter(cotegory= 'Burger')
+    menu = Menu.objects.filter(cotegory='Dish')
+    menus = Menu.objects.filter(id='0')
+    burg = Menu.objects.filter(cotegory='Burger')
     # all_dishes = ''
 
     if request.method == 'POST':
@@ -75,14 +76,12 @@ def menu(request):
                                          'about',
                                          'price',
                                          'companys__name', )
-            menu = Menu.objects.annotate(search=search_vector).filter(search=search)
+            menus = Menu.objects.annotate(search=search_vector).filter(search=search)
     else:
         form = SearchForm
 
-    return render(request, 'menu/menu_home.html', {'menu': menu, 'burg': burg, 'name': menu, 'form': form, 'user': request.user})
-
-
-
+    return render(request, 'menu/menu_home.html',
+                  {'menus': menus, 'menu': menu, 'burg': burg, 'form': form, 'user': request.user})
 
 
 def adda(request):
@@ -145,6 +144,13 @@ def log_out(request):
     return redirect('/')
 
 
+def Delete(request):
+    delete = CartContent.objects.filter(id='id')
+    dele = delete.delete()
+
+    return render(request, 'menu/cart.html', {'dele': dele})
+
+
 def aboutuser(request):
     return render(request, 'menu/aboutuser.html')
 
@@ -161,6 +167,12 @@ class CartView(MasterView):
         }
         return render(request, 'menu/cart.html', context)
 
+    def remove(self, cart):
+        cart = self.get_cart_records()
+        cart_delete = cart.delete()
+
+        return render( 'menu/cart.html', {'cart_delete':cart_delete})
+
     def post(self, request):
         dish = Menu.objects.get(id=request.POST.get('dish_id'))
         cart = self.get_cart()
@@ -175,4 +187,3 @@ class CartView(MasterView):
         response = self.get_cart_records(cart, redirect('/menu/#dish-{}'.format(dish.id)))
         return response
         # перенаправляем на главную страницу, с учетом якоря
-
