@@ -8,13 +8,24 @@ class Company(models.Model):
     name = models.CharField('Название', max_length=40)
     about = models.CharField('О компании', max_length=1000)
 
-
     def __str__(self):
         return str(self.name)
 
     class Meta:
         verbose_name = 'Компания'
         verbose_name_plural = 'Компании'
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    description = models.TextField(blank=True, null=True)
+    work = models.CharField('Место работы', max_length=200)
+    age = models.IntegerField('Возраст', null=True)
+    images = models.ImageField('Аватарка', default='null')
+
+    # avatar
+    def __str__(self):
+        return self.user.username
 
 
 class Menu(models.Model):
@@ -29,7 +40,7 @@ class Menu(models.Model):
         return f'/menu/{self.id}'
 
     def get_companys(self):
-        return ', ' .join([cat.name for cat in self.companys.all()])
+        return ', '.join([cat.name for cat in self.companys.all()])
 
     class Meta:
         verbose_name = 'Еду'
@@ -43,7 +54,6 @@ class Cart(models.Model):
     session_key = models.CharField(max_length=999, blank=True, default='')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     total_cost = models.PositiveIntegerField()
-
 
     def __str__(self):
         return str(self.id)
@@ -65,7 +75,3 @@ class CartContent(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Menu, on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(null=True)
-
-
-
-

@@ -21,7 +21,10 @@
                             <input id="submit_search" class="form-control" type="submit" hidden>
                             <label for="submit_search" class="button poiskat">Поиск</label>
                         </div>
-
+                    </form>
+                    <form action="cart/" name="delete" method="post">
+                        {% csrf_token %}
+                        <button type="submit">удалить {{ a }}</button>
                     </form>
                 </div>
             </div>
@@ -43,7 +46,7 @@
                                                           alt=""></div>
                                 <a href="{{ el.id }}" class="elname">{{ el.name }}</a>
                             </a>
-                            <form class="corz" action="cart/" method="post">
+                            <form class="corz" action="cart/" name="add" method="">
                                 <div class="cras">
                                     {% csrf_token %}
                                     <input class="" type="hidden" name="dish_id" value="{{ el.id }}">
@@ -55,6 +58,7 @@
                                                                                        src="../static/web/img/w128h1281390856920buy128.png"
                                                                                        alt=""></button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -105,7 +109,7 @@
                 <div class="">
                     {% if menus %}
                     <div class="razburg">
-                    Найдено
+                        Найдено
                     </div>
                     {% for ela in menus %}
                     <div class="tovar">
@@ -138,8 +142,6 @@
                 </div>
             </div>
         </div>
-
-
         <div>
 
         </div>

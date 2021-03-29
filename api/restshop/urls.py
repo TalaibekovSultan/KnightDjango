@@ -6,6 +6,9 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'cart', views.CartViewSet)
+router.register(r'cartcontent', views.CartContentViewSet)
+router.register(r'menu', views.MenuViewSet)
+router.register(r'company', views.CompanyViewSet)
 
 
 

@@ -1,4 +1,4 @@
-from .models import Menu, CartContent, Cart
+from .models import Menu, CartContent, Cart, UserProfile, User
 from .forms import MenuForm
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, reverse
@@ -48,7 +48,7 @@ class MasterView(View):
         return cart
 
 
-class NewDeteilView(DetailView):
+class NewDetailView(DetailView):
     model = Menu
     template_name = 'menu/details_view.html'
     context_object_name = "article"
@@ -144,15 +144,14 @@ def log_out(request):
     return redirect('/')
 
 
-def Delete(request):
-    delete = CartContent.objects.filter(id='id')
-    dele = delete.delete()
-
-    return render(request, 'menu/cart.html', {'dele': dele})
-
-
 def aboutuser(request):
     return render(request, 'menu/aboutuser.html')
+
+
+def user_profiles(request):
+    # user_id = User.objects.get(id)
+    user_profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'menu/aboutuser.html', {'user_profile': user_profile})
 
 
 class CartView(MasterView):
@@ -167,12 +166,6 @@ class CartView(MasterView):
         }
         return render(request, 'menu/cart.html', context)
 
-    def remove(self, cart):
-        cart = self.get_cart_records()
-        cart_delete = cart.delete()
-
-        return render( 'menu/cart.html', {'cart_delete':cart_delete})
-
     def post(self, request):
         dish = Menu.objects.get(id=request.POST.get('dish_id'))
         cart = self.get_cart()
@@ -186,4 +179,12 @@ class CartView(MasterView):
             cart_content.save()
         response = self.get_cart_records(cart, redirect('/menu/#dish-{}'.format(dish.id)))
         return response
+
         # перенаправляем на главную страницу, с учетом якоря
+
+    def delete(self, instance):
+        cart = CartContent.product.objects.filter(cart__id=id).get(all=instance.DELETE.get("product"))
+        print(cart)
+        CartContent.objects.filter(cart=cart).delete()
+
+        return render(instance, 'menu.html')

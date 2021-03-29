@@ -1,0 +1,20 @@
+{% extends 'web/home.html' %}
+
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+<form class="corz" action="cart/" method="delete">
+    <div class="cras">
+        {% csrf_token %}
+        <input class="" type="hidden" name="dish_id" value="{{ ela.id }}">
+        <label class="bordertp">
+            <input class="inpsd" type="number" name="qty" value="{{ menus.id }}">
+        </label>
+
+        <div class="domss"> {{ ela.price }}</div>
+        <button class="cnopochka domms" type="submit"><img class="imgcnop"
+                                                           src="../static/web/img/w128h1281390856920buy128.png"
+                                                           alt=""></button>
+    </div>
+</form>
+{% endblock %}
